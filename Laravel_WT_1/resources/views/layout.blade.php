@@ -14,5 +14,6 @@
 </head>
 <body>
 	<div class="jumbotron p-2"><h1 class='text-primary text-center'>Layout view</h1></div>
+	@yield('content_form')
 </body>
 </html>

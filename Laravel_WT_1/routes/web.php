@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('layout');
 });
 
-Route::post('/posts', [CrudController::class, 'submit'])->name('posts');
+Route::get('/posts', [CrudController::class, 'submit'])->name('posts');
 
 Route::get('/index', [CrudController::class, 'index'])->name('index');
 
@@ -28,3 +28,6 @@ Route::get('/edit', [CrudController::class, 'edit'])->name('edit');
 Route::get('/show', [CrudController::class, 'show'])->name('show');
 
 Route::get('/create', [CrudController::class, 'create'])->name('create');
+
+Route::post('/create/res', [CrudController::class, 'submit'])->name('create_form');
+
