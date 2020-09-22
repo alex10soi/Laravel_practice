@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class CrudController extends Controller
 {
-    public function submit() {
-    	return 'Okey';
-    }
 
     public function index() {
     	return view('/posts/index', []);
@@ -25,4 +23,17 @@ class CrudController extends Controller
     public function show() {
     	return view('/posts/show', []);
     }
+
+	public function store(Request $request)	{
+	    $post = new Post;
+	    $post->title = $request->input('title');
+	    $post->body = $request->input('body_text');
+
+	    $post->save();     // созраняет данные модели в базу данных
+
+    	return redirect()
+    			->route('create_form')
+    			->with('success', 'Сообщение было добавлено с помощью store() метода');
+	}
+
 }

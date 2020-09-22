@@ -15,5 +15,10 @@
 <body>
 	<div class="jumbotron p-2"><h1 class='text-primary text-center'>Layout view</h1></div>
 	@yield('content_form')
+	@if(session('success'))
+		<div class='alert alert-success'>
+			{{ session('success') }}
+		</div>
+    @endif
 </body>
 </html>

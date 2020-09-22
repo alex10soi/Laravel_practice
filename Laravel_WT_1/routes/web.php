@@ -29,5 +29,5 @@ Route::get('/show', [CrudController::class, 'show'])->name('show');
 
 Route::get('/create', [CrudController::class, 'create'])->name('create');
 
-Route::post('/create/res', [CrudController::class, 'submit'])->name('create_form');
+Route::post('/', [CrudController::class, 'store'])->name('create_form');
 
