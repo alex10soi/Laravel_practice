@@ -20,3 +20,11 @@ use App\Http\Controllers\CrudController;
 // });
 
 Route::post('/posts', [CrudController::class, 'submit'])->name('posts');
+
+Route::get('/index', [CrudController::class, 'index'])->name('index');
+
+Route::get('/edit', [CrudController::class, 'edit'])->name('edit');
+
+Route::get('/show', [CrudController::class, 'show'])->name('show');
+
+Route::get('/create', [CrudController::class, 'create'])->name('create');
