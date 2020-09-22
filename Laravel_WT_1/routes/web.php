@@ -15,9 +15,9 @@ use App\Http\Controllers\CrudController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('layout');
+});
 
 Route::post('/posts', [CrudController::class, 'submit'])->name('posts');
 
