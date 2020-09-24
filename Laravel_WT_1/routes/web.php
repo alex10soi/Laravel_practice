@@ -32,4 +32,4 @@ Route::get('/create', [CrudController::class, 'create'])->name('create');
 
 Route::post('/', [CrudController::class, 'store'])->name('create_form');
 
-Route::post('/', [CrudController::class, 'update'])->name('create_form');
+// Route::post('/', [CrudController::class, 'update'])->name('create_form');
