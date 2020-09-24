@@ -36,4 +36,9 @@ class CrudController extends Controller
     			->with('success', 'Сообщение было добавлено с помощью store() метода');
 	}
 
+	public function update(Request $request, $id) {
+	    $posts = Post::find($id);
+	    $posts->fill($request->all());
+	}
+
 }
