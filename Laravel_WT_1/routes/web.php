@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Http\Controllers\CrudController;
+// use App\Http\Middleware\checkRole;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ Route::get('/', function () {
     return view('layout');
 });
 
-Route::get('/posts', [CrudController::class, 'submit'])->name('posts');
+// Route::get('/posts', [CrudController::class, 'submit'])->name('posts');
 
 Route::get('/index', [CrudController::class, 'index'])->name('index');
 
@@ -31,3 +32,4 @@ Route::get('/create', [CrudController::class, 'create'])->name('create');
 
 Route::post('/', [CrudController::class, 'store'])->name('create_form');
 
+Route::post('/', [CrudController::class, 'update'])->name('create_form');
