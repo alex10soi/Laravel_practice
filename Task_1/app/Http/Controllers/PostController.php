@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return 'Hello World!';
+        return view('posts.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       return view('posts.create');           
     }
 
     /**
@@ -46,7 +46,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show');
     }
 
     /**
@@ -57,7 +57,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit');
     }
 
     /**
@@ -69,7 +69,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+       return view('posts.edit');                 
     }
 
     /**
@@ -80,6 +80,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        return view('posts.index');                
     }
 }
