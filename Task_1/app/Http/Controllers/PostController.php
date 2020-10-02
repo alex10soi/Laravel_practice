@@ -24,6 +24,8 @@ class PostController extends Controller
      */
     public function create()
     {
+        // $request = new Request;
+        // dd($request->path());
         return view('posts.create');
     }
 
@@ -35,6 +37,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+       $post = new Post;
+       $post->fill($request->all());
+       $post->save();
+
        return view('posts.create');           
     }
 
