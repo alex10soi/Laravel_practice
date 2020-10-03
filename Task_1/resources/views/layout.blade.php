@@ -14,7 +14,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link href="carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
@@ -27,17 +26,22 @@
                             <li class="nav-item {{Request::is('/') ? 'active' : ''}}">
                                 <a class="nav-link" href="/">Homepage</a>
                             </li>
-
+                            <li class="nav-item {{Request::is('posts') ? 'active' : ''}}">
+                                <a class="nav-link" href="{{ route('postsList') }}">Post list</a>
+                            </li>
                             <li class="nav-item {{Request::is('posts/create') ? 'active' : ''}}">
                                 <a class="nav-link" href="{{ route('createPosts') }}">Add Post</a>
                             </li>
-                            <li class="nav-item {{Request::is('posts/{post}/edit') ? 'active' : ''}}">
-                                <a class="nav-link" href="{{ route('editPosts', $post ?? '') }}">Edit Post</a>
-                            </li>
+                            <!-- Button Edit start -->
+                            <!-- <li class="nav-item {{Request::is('posts/{post}/edit') ? 'active' : ''}}">
+                                <a class="nav-link" href="{{ route('editPosts', $post ?? $postId) }}">Edit Post</a>
+                            </li> -->
+                            <!-- Button Edit end -->
                         </ul>                        
                     </div>
                 </nav>
             </header>
+              @yield('newStyle')
               @yield('content')
         </div>
         <footer class="container">
@@ -49,6 +53,6 @@
     <script>
     window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')
     </script>
-    <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>

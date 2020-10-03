@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   box-sizing: border-box;
-  background: url("/images/post.jpeg") no-repeat center;
+  background: url("/images/post.jpeg") no-repeat center fixed;
   background-size: cover;
 }
 
@@ -52,6 +52,11 @@ header {
 .col-lg-4 {
   position: relative;
   padding-bottom: 50px;
+  padding-top: 15px;
+}
+
+.post_wide {
+  width: 100%;
 }
 
 .post_text {
@@ -60,11 +65,41 @@ header {
   text-overflow: ellipsis;
 }
 
-.col-lg-4 a {
+.col-lg-4 a.btn-secondary,
+.delete,
+.edit {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 15px;
+  bottom: 15px;
   margin-top: auto;
+}
+
+.delete {
+  left: 150px;
+}
+
+.edit {
+  left: 250px;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.send-message {
+  display: none;
+}
+
+.send-message.active {
+  display: block;
+  height: 30px;
+  width: 100%;
+  background-color: green;
+  color: white;
+}
+
+.control {
+  margin-bottom: 20px;
 }
 
 .bd-placeholder-img {

@@ -1,11 +1,14 @@
 @extends('layout')
 
-@section('content')
+@section('newStyle')
 	<style type="text/css" media="screen">
-		html,body {
-			background: none; 
+		.label {
+			color: white; 
 		}
 	</style>
+@endsection
+
+@section('content')
 	<div class="wrapper">
 		<form class="create-form" action="{{ route('storePost') }}" method="POST">
 			@csrf
@@ -29,5 +32,8 @@
 				</div>
 			</div>
 		</form>
+		@if($message ?? '')
+		   <div class="send-message <?php echo $message === 1 ? 'active' : ''; ?>">Сообщение отправлено</div>
+		@endif
 	</div>
 @endsection

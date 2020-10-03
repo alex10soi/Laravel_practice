@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
@@ -14,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::all();
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -24,9 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        // $request = new Request;
-        // dd($request->path());
-        return view('posts.create');
+        $postId = self::getLastPostId();
+        return view('posts.create', compact('postId'));
     }
 
     /**
@@ -37,11 +39,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->validate($request, [
+        //     'title' => 'required',
+        //     'body' => 'required'
+        // ]);
        $post = new Post;
        $post->fill($request->all());
        $post->save();
-
-       return view('posts.create');           
+       $message = 1;
+       $postId = self::getLastPostId();
+       return view('posts.create', compact('message', 'postId'));   
     }
 
     /**
@@ -50,9 +57,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        return view('posts.show');
+        $post = Post::find($id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -61,9 +69,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        return view('posts.edit');
+        $post = Post::find($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -73,9 +82,14 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-       return view('posts.edit');                 
+        $posts = Post::find($id);
+        $posts->fill($request->all());
+        $posts->save();
+        $postId = self::getLastPostId();
+        $posts = Post::all();
+        return redirect()->route('postsList')->with(compact('postId', 'posts'));           
     }
 
     /**
@@ -84,8 +98,17 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        return view('posts.index');                
+        $post = Post::findOrFail($id);
+        $post->delete();
+        $posts = [];
+        return self::index();             
+    }
+
+    public function getLastPostId() {
+        $post = Post::all();
+        $postId = $post[count($post) - 1]->id;
+        return $postId;
     }
 }
