@@ -16,7 +16,11 @@ use App\Models\Post;
 
 Route::get('/', function () {
 	$post = Post::all();
-	$postId = $post[count($post) - 1]->id;
+	if(count($post) > 0) {
+		$postId = $post[count($post) - 1]->id;
+	} else {
+		$postId = 0;
+	}
     return view('layout', compact('postId'));
 })->name('homepage');
 

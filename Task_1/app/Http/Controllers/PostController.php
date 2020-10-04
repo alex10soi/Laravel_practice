@@ -39,10 +39,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'title' => 'required',
-        //     'body' => 'required'
-        // ]);
+        $this->validate($request, [
+            'title' => 'required|unique:posts|min:5|max:255',
+            'body' => 'required'
+        ]);
+
        $post = new Post;
        $post->fill($request->all());
        $post->save();
@@ -106,9 +107,14 @@ class PostController extends Controller
         return self::index();             
     }
 
-    public function getLastPostId() {
+    public function getLastPostId() 
+    {
         $post = Post::all();
-        $postId = $post[count($post) - 1]->id;
+        if(count($post) > 0) {
+            $postId = $post[count($post) - 1]->id;
+        } else {
+            $postId = 0;
+        }
         return $postId;
     }
 }

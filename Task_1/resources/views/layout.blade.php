@@ -32,11 +32,6 @@
                             <li class="nav-item {{Request::is('posts/create') ? 'active' : ''}}">
                                 <a class="nav-link" href="{{ route('createPosts') }}">Add Post</a>
                             </li>
-                            <!-- Button Edit start -->
-                            <!-- <li class="nav-item {{Request::is('posts/{post}/edit') ? 'active' : ''}}">
-                                <a class="nav-link" href="{{ route('editPosts', $post ?? $postId) }}">Edit Post</a>
-                            </li> -->
-                            <!-- Button Edit end -->
                         </ul>                        
                     </div>
                 </nav>

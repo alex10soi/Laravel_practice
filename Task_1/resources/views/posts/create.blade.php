@@ -10,12 +10,28 @@
 
 @section('content')
 	<div class="wrapper">
+		<h1 class="text-white">Create Post</h1>
+		@if ($errors->any())
+		    <div class="alert alert-danger">
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li>{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+		@endif
+<!-- Create Post Form -->
 		<form class="create-form" action="{{ route('storePost') }}" method="POST">
 			@csrf
 			<div class="field">
 				<label for="title" class="label">Title</label>
 				<div class="control">
 					<input type="text" class="title" name="title" id="title">
+					{{-- Errors this input start --}}
+					{{-- @error('title')
+					    <div class="alert alert-danger">{{ $message }}</div>
+					@enderror --}}
+					{{-- Errors this input end --}}
 				</div>
 			</div>
 
@@ -23,6 +39,11 @@
 				<label for="body" class="label">Body</label>
 				<div class="control">
 					<textarea class="body" name="body" id="body"></textarea>
+					{{-- Errors this input start --}}
+					{{-- @error('body')
+					    <div class="alert alert-danger">{{ $message }}</div>
+					@enderror --}}
+					{{-- Errors this input end --}}
 				</div>
 			</div>
 
