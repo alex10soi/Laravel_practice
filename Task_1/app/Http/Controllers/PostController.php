@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBlogPost;
 use Illuminate\Support\Facades\DB;
 
 
@@ -37,13 +38,9 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
-        $this->validate($request, [
-            'title' => 'required|unique:posts|min:5|max:255',
-            'body' => 'required'
-        ]);
-
+       $request->validated();
        $post = new Post;
        $post->fill($request->all());
        $post->save();
