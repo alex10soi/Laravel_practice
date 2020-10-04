@@ -21,7 +21,7 @@ Route::get('/', function () {
 	} else {
 		$postId = 0;
 	}
-    return view('layout', compact('postId'));
+    return view('layouts.app', compact('postId'));
 })->name('homepage');
 
 Route::get('/posts', [PostController::class, 'index'])->name('postsList');
@@ -31,3 +31,6 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('showPosts');
 Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('editPosts');
 Route::put('/posts/{post}/update', [PostController::class, 'update'])->name('updatePosts');
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->name('deletePosts');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

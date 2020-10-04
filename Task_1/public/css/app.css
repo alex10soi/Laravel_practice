@@ -10,7 +10,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 20px 30px 0;
+  padding: 40px 30px 0;
+  width: 100%;
 }
 
 input,
@@ -29,11 +30,15 @@ textarea {
 
 .content {
   flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 main {
   padding-top: 56px;
   margin-bottom: 100px;
+  width: 100%;
 }
 
 .footer {
@@ -42,11 +47,7 @@ main {
 }
 
 .container {
-  background-color: white;
-}
-
-header {
-  height: 56px;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .col-lg-4 {
