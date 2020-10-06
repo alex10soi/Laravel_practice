@@ -14,15 +14,18 @@ use App\Models\Post;
 |
 */
 
-Route::get('/', [PostController::class, 'startHomepage'])->name('homepage');
-
-Route::get('/posts', [PostController::class, 'index'])->name('postsList');
-Route::get('/posts/create', [PostController::class, 'create'])->name('createPosts');
-Route::post('/posts/create', [PostController::class, 'store'])->name('storePost');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('showPosts');
-Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('editPosts');
-Route::put('/posts/{post}/update', [PostController::class, 'update'])->name('updatePosts');
-Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->name('deletePosts');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [PostController::class, 'startHomepage'])->name('homepage');
+
+	Route::get('/posts', [PostController::class, 'index'])->name('postsList');
+	Route::get('/posts/create', [PostController::class, 'create'])->name('createPosts');
+	Route::post('/posts/create', [PostController::class, 'store'])->name('storePost');
+	Route::get('/posts/{post}', [PostController::class, 'show'])->name('showPosts');
+	Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('editPosts');
+	Route::put('/posts/{post}/update', [PostController::class, 'update'])->name('updatePosts');
+	Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->name('deletePosts');
+});
