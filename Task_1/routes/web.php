@@ -14,15 +14,7 @@ use App\Models\Post;
 |
 */
 
-Route::get('/', function () {
-	$post = Post::all();
-	if(count($post) > 0) {
-		$postId = $post[count($post) - 1]->id;
-	} else {
-		$postId = 0;
-	}
-    return view('layouts.app', compact('postId'));
-})->name('homepage');
+Route::get('/', [PostController::class, 'startHomepage'])->name('homepage');
 
 Route::get('/posts', [PostController::class, 'index'])->name('postsList');
 Route::get('/posts/create', [PostController::class, 'create'])->name('createPosts');

@@ -113,4 +113,9 @@ class PostController extends Controller
         }
         return $postId;
     }
+
+    public function startHomepage() {
+        $postId = $this->getLastPostId();
+        return view('layouts.app', compact('postId'));
+    }
 }
