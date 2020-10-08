@@ -39,7 +39,6 @@ class PostController extends Controller
      */
     public function store(StoreBlogPost $request)
     {
-        print_r($request->server());
        $request->validated();
        $post = new Post;
        $post->fill($request->all());
