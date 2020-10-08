@@ -26,7 +26,7 @@
 			<div class="field">
 				<label for="title" class="label">Title</label>
 				<div class="control">
-					<input type="text" class="title" name="title" id="title">
+					<input type="text" class="title" name="title" id="title" value="{{ old('title') }}">
 					{{-- Errors this input start --}}
 					{{-- @error('title')
 					    <div class="alert alert-danger">{{ $message }}</div>
@@ -38,9 +38,9 @@
 			<div class="field">
 				<label for="body" class="label">Body</label>
 				<div class="control">
-					<textarea class="body" name="body" id="body"></textarea>
+					<textarea class="body" name="body" id="body">{{ old('body') }}</textarea>
 					{{-- Errors this input start --}}
-					{{-- @error('body')
+					{{-- @error('body') 
 					    <div class="alert alert-danger">{{ $message }}</div>
 					@enderror --}}
 					{{-- Errors this input end --}}
